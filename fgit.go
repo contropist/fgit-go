@@ -127,9 +127,8 @@ func main() {
 
 	isConvertToFastGit := false
 	isPushOrPull := false
-
+	isConnectOk := false
 	if os.Args[1] == "debug" {
-		isConnectOk := false
 		switch len(os.Args) {
 		case 2:
 			isConnectOk = debug("https://hub.fastgit.org")
