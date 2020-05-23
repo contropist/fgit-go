@@ -38,7 +38,7 @@ func debug(url string) {
 		fmt.Print("IP Address: ")
 		addr, err := net.LookupIP(strings.Replace(strings.Replace(url, "https://", "", -1), "http://", "", -1))
 		if err != nil {
-			fmt.Println("Unknown")
+			fmt.Println("Unknown -> ", err)
 		} else {
 			fmt.Println(addr)
 		}
