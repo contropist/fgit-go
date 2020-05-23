@@ -29,7 +29,7 @@ func debugConnection(url string) bool {
 	}
 }
 
-func debug(url string) bool {
+func debug(url string) {
 	fmt.Println("" +
 		"FastGit Debug Command Line Tool\n" +
 		"===============================")
@@ -57,7 +57,7 @@ func debug(url string) bool {
 			}
 		}
 
-		return debugConnection(url)
+		debugConnection(url)
 	} else {
 		fmt.Println("" +
 			"SYNTAX\n" +
@@ -69,7 +69,6 @@ func debug(url string) bool {
 			"EXAMPLE\n" +
 			"    fgit debug\n" +
 			"    fgit debug https://fastgit.org")
-		return true
 	}
 }
 
@@ -125,21 +124,18 @@ func main() {
 		os.Exit(0)
 	}
 
-	isConvertToFastGit := false
 	isPushOrPull := false
 	isConnectOk := false
 	if os.Args[1] == "debug" {
 		switch len(os.Args) {
 		case 2:
-			isConnectOk = debug("https://hub.fastgit.org")
+			debug("https://hub.fastgit.org")
+			os.Exit(0)
 		case 3:
-			isConnectOk = debug(os.Args[2])
+			debug(os.Args[2])
+			os.Exit(0)
 		default:
 			fmt.Println("Invalid args for debug. If help wanted, use --help arg.")
-		}
-		if isConnectOk {
-			os.Exit(0)
-		} else {
 			os.Exit(1)
 		}
 	}
