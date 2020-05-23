@@ -125,7 +125,7 @@ func main() {
 	}
 
 	isPushOrPull := false
-	isConnectOk := false
+	isConvertToFastGit := false
 	if os.Args[1] == "debug" {
 		switch len(os.Args) {
 		case 2:
