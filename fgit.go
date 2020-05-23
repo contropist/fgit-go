@@ -129,7 +129,7 @@ func main() {
 	isPushOrPull := false
 
 	if os.Args[1] == "debug" {
-		var isConnectOk bool
+		isConnectOk := false
 		switch len(os.Args) {
 		case 2:
 			isConnectOk = debug("https://hub.fastgit.org")
