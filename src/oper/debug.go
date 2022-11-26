@@ -1,6 +1,7 @@
-package main
+package oper
 
 import (
+	"fgit-go/shared"
 	"fmt"
 	"io/ioutil"
 	"net"
@@ -16,7 +17,7 @@ func (d *DebugFunc) Run(args []string) {
 	var isConnectOk bool
 	switch len(args) {
 	case 0:
-		isConnectOk = debug("https://hub.fastgit.org")
+		isConnectOk = debug(shared.GitMirror)
 	case 1:
 		isConnectOk = debug(os.Args[0])
 	default:
@@ -57,7 +58,7 @@ func debug(url string) bool {
 		fmt.Println("Remote Address:", url)
 		fmt.Print("IP Address: ")
 
-		addr, err := net.LookupIP(removeHttpAndHttps(url))
+		addr, err := net.LookupIP(shared.RemoveHttpAndHttps(url))
 
 		if err != nil {
 			fmt.Println("Unknown")
@@ -80,7 +81,7 @@ func debug(url string) bool {
 		}
 		return debugConnection(url)
 	} else {
-		fmt.Println(debugHelpMsg)
+		fmt.Println(shared.DebugHelpMsg)
 		return true
 	}
 }
